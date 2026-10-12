@@ -1,0 +1,172 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box; /* FIX: without this, width:100% + padding made the page scroll sideways */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* lets the buttons drop to a 2nd row on small phones */
+  column-gap: 24px; /* always keeps some space between the logos and the buttons */
+  padding: 15px clamp(16px, 4vw, 48px);
+}
+
+/* empty spacer, same width as the logo side, so the buttons are centered */
+.navbar::after {
+  content: "";
+  flex: 1;
+}
+
+.logos {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logos img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain; /* logos never get stretched */
+  flex-shrink: 0;      /* logos never get squished by the flex row */
+}
+
+.logos p {
+  margin: 0;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.tf-logo {
+  margin-left: 50px;
+  padding-left: 40px;
+  border-left: 1px solid white;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav button.active {
+  border-bottom-color: orange;
+}
+
+/* ===== Small laptop / large tablet ===== */
+@media (max-width: 1100px) {
+  .logos {
+    gap: 10px;
+  }
+
+  /* hide the first "IIT BOMBAY" label to save space (the one right after the IIT logo) */
+  .logos > p {
+    display: none;
+  }
+
+  .logos img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tf-logo {
+    margin-left: 24px;
+    padding-left: 24px;
+  }
+
+  /* the "Techfest" heading has an inline font-size in Navbar.jsx, so !important is needed to override it */
+  .logos h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .nav {
+    gap: 4px;
+  }
+}
+
+/* ===== Tablet and phone ===== */
+@media (max-width: 800px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .navbar::after {
+    display: none;
+  }
+
+  .logos {
+    flex: 0 0 auto;
+  }
+
+  .logos p {
+    display: none;
+  }
+
+  .logos img {
+    width: 56px;
+    height: 70px;
+  }
+
+  .tf-logo {
+    margin-left: 16px;
+    padding-left: 16px;
+  }
+
+  .nav {
+    gap: 2px;
+  }
+
+  .nav button {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== Phone: logos on the first row, buttons on their own row below ===== */
+@media (max-width: 600px) {
+  .navbar {
+    padding-top: 10px;
+    row-gap: 6px;
+  }
+
+  .logos {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .logos img {
+    width: 44px;
+    height: 54px;
+  }
+
+  .tf-logo {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+
+  .logos h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-around; /* spread the 4 buttons across the full width */
+    gap: 0;
+  }
+
+  .nav button {
+    padding: 8px 6px;
+  }
+}

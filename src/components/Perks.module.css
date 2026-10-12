@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500&display=swap");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #03070f; }
+
+:root {
+  --orange: #ff6a1a;
+  --orange-soft: #ff8a3d;
+  --ink: #e9eef5;
+  --muted: #aab4c3;
+  --card-border: #26435f;
+}
+
+.page {
+  position: relative;
+  isolation: isolate;           /* keeps the z-index: -1 background inside this page */
+  display: flex;
+  align-items: flex-start;
+  gap: 40px 160px;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;           /* correct height on mobile browsers */
+  padding: 140px 6vw 60px;      /* top padding leaves room for the navbar */
+  box-sizing: border-box;
+} 
+
+.bg {
+  position: fixed;
+  inset: 0;                     /* top/right/bottom/left = 0, so it fills the window */
+  z-index: -1;                  /* behind the text */
+  background-size: cover;       /* scale and crop to always fill the screen */
+  background-position: center;  /* try "30% center" to keep the building in view on phones */
+  background-repeat: no-repeat;
+}
+
+/* dark overlay so the text stays readable */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+
+.side-label {
+  position: absolute;
+  top: 28px;
+  right: 14px;
+  writing-mode: vertical-rl;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+.side-label::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  margin-top: 100px;
+  gap: 32px;
+  padding: 28px 70px 0 32px;
+}
+
+/* left */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+.eyebrow-line { width: 26px; height: 2px; background: var(--orange); }
+
+h1 {
+  margin-top: 22px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  font-size: clamp(36px, 4.6vw, 62px);
+  line-height: 1.08;
+  letter-spacing: 1px;
+}
+h1 span { display: block; }
+.white { color: #f2f5f9; text-shadow: 0 0 1px #fff, 2px 2px 0 #3a4a5c; }
+.orange { color: var(--orange); text-shadow: 0 0 1px #ff9a5a, 2px 2px 0 #7a2a0a; }
+
+.lead {
+  max-width: 280px;
+  margin-top: 22px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+
+
+/* cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.card {
+  --cut: 16px;
+  background: var(--card-border);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+.card-inner {
+  position: relative;
+  height: 100%;
+  min-height: 150px;
+  margin: 1px;
+  padding: 18px 18px 26px;
+  background: linear-gradient(160deg, #0a1a2d 0%, #07111f 100%);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+.ring {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  margin-bottom: 14px;
+  color: var(--orange-soft);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 106, 26, 0.55);
+  background: radial-gradient(circle, rgba(255, 106, 26, 0.2), rgba(255, 106, 26, 0) 70%);
+}
+.ring svg { width: 100%; height: 100%; display: block; }
+.card h3 {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  color: #f2f5f9;
+}
+.card p {
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.card-line {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  width: 22px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.tagline {
+  position: absolute;
+  right: 0;
+  bottom: 54px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+.tagline span { width: 18px; height: 2px; background: var(--orange); }
+
+/* responsive */
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* tablet + mobile: stack the layout, image sits under the cards */
+@media (max-width: 900px) {
+  .page {
+    padding-bottom: 50vh;
+    background-size: auto 50vh;
+    background-position: 15% bottom;
+  }
+  .content {
+    flex-direction: column;   /* text on top, cards underneath (.content is a flex box, so grid-template-columns did nothing) */
+    width: 100%;
+    margin-top: 0;            /* .page already leaves room for the navbar */
+    padding: 24px 48px 0 20px;
+  }
+  .lead { max-width: 480px; }
+  .tagline { bottom: 16px; right: 16px; }
+}
+
+@media (max-width: 520px) {
+  .content { padding: 20px 40px 0 16px; }
+  .grid { grid-template-columns: 1fr; }
+  .card-inner { min-height: 0; }
+  .tagline { font-size: 10px; letter-spacing: 2px; }
+}
+
+/* big screens: slightly larger text */
+@media (min-width: 1400px) {
+  .lead { max-width: 340px; font-size: 15px; }
+  .card h3 { font-size: 16px; }
+  .card p { font-size: 13px; }
+  .card-inner { min-height: 190px; }
+}
+
+.card {
+  transition: transform 0.3s ease;   
+}
+
+.card:hover {
+  transform: scale(1.05);            
+}

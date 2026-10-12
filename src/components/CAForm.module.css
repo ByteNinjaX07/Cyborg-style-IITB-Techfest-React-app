@@ -1,0 +1,148 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  overflow-y: auto;
+}
+
+.formContainer {
+  position: relative;
+  width: 55%;
+  min-height: 100vh;
+  padding: 55px 5%;
+  box-sizing: border-box;
+  color: white;
+  background: #03070c;
+  border-left: 2px solid #ff6500;
+  box-shadow: 0 0 30px rgba(255, 101, 0, 0.15);
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.formContainer h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.formContainer h1 span {
+  color: #ff6500;
+}
+
+.subtitle {
+  color: #b8c5d1;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.formGrid input,
+.formGrid select,
+.formContainer textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 17px;
+  color: white;
+  background: #050c14;
+  border: 1px solid #31536a;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+}
+
+.formGrid input:focus,
+.formGrid select:focus,
+.formContainer textarea:focus {
+  border-color: #ff6500;
+}
+
+.formGrid input::placeholder,
+.formContainer textarea::placeholder {
+  color: #8198a8;
+}
+
+.formGrid select {
+  color: #b8c5d1;
+}
+
+.formGrid select option {
+  background: #050c14;
+}
+
+.formContainer textarea {
+  margin-top: 20px;
+  min-height: 125px;
+  resize: vertical;
+}
+
+.counter {
+  margin: 5px 0 20px;
+  text-align: right;
+  color: #8198a8;
+  font-size: 12px;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #b8c5d1;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.terms input {
+  accent-color: #ff6500;
+  margin-top: 3px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 17px;
+  border: none;
+  border-radius: 7px;
+  background: #ff6500;
+  color: #080808;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submitButton:hover {
+  background: #ff8533;
+  box-shadow: 0 0 20px rgba(255, 101, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    width: 100%;
+    padding: 60px 22px 30px;
+  }
+
+  .formContainer h1 {
+    font-size: 28px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

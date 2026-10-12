@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Mono:wght@400;700&display=swap");
+
+/* No extra classes: the small details (eyebrow, watch video, scroll down...)
+   are drawn with ::before / ::after of the existing elements. */
+
+/* ---------- hero: image + dark fade on the left ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  color: #f2f4f8;
+  font-family: "Space Mono", monospace;
+  background:
+    linear-gradient(90deg, rgba(2, 6, 13, 0.95) 0%, rgba(2, 6, 13, 0.75) 35%, rgba(2, 6, 13, 0) 65%),
+    url("../assets/Neon Cyborg Over Techfest Campus.png") center right / cover no-repeat #02060d;
+}
+
+/* bottom right: ONE FESTIVAL. INFINITE POSSIBILITIES. */
+.hero::before {
+  content: "ONE FESTIVAL.\A INFINITE POSSIBILITIES.";
+  white-space: pre;
+  position: absolute;
+  right: 3.9vw;
+  bottom: 8vh;
+  padding-right: calc(1.6vw + 13px);
+  text-align: right;
+  font-size: clamp(10px, 0.85vw, 16px);
+  line-height: 1.7;
+  letter-spacing: 0.18em;
+  color: #a8b3c1;
+  background: linear-gradient(#f05a1f, #f05a1f) no-repeat right center / 1.6vw 2px;
+}
+
+/* bottom left: TECH × CREATIVITY × CULTURE */
+.hero::after {
+  content: "TECH × CREATIVITY × CULTURE";
+  position: absolute;
+  left: 4.8vw;
+  bottom: 13.6vh;
+  padding-left: 3.5vw;
+  font-size: clamp(11px, 1.05vw, 20px);
+  letter-spacing: 0.28em;
+  color: #8793a3;
+  background: linear-gradient(#f05a1f, #f05a1f) no-repeat left center / 2.3vw 2px;
+}
+
+/* ---------- left text block ---------- */
+.heroText {
+  padding: 12vw 0 0 4.8vw;
+}
+
+/* top: TECHFEST IIT BOMBAY 2026 */
+.heroText::before {
+  content: "TECHFEST IIT BOMBAY 2026";
+  display: block;
+  padding-left: 3.5vw;
+  font-size: clamp(11px, 1.05vw, 20px);
+  line-height: 1.6;
+  letter-spacing: 0.28em;
+  color: #8793a3;
+  background: linear-gradient(#f05a1f, #f05a1f) no-repeat left center / 2.3vw 2px;
+}
+
+/* right edge: vertical TECHFEST IIT BOMBAY with orange dot */
+.heroText::after {
+  content: "TECHFEST IIT BOMBAY";
+  position: absolute;
+  right: 3.2vw;
+  top: 11.9vw;
+  padding-top: 22px;
+  writing-mode: vertical-rl;
+  font-size: clamp(10px, 0.85vw, 16px);
+  letter-spacing: 0.3em;
+  color: #8793a3;
+  background: radial-gradient(circle, #f05a1f 4px, transparent 4.5px) no-repeat top center / 10px 10px;
+}
+
+/* ---------- headline ---------- */
+.headline h1 {
+  margin: 0.6vw 0 0;
+  font-family: "Syncopate", sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 5.8vw, 130px);
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f2f4f8;
+  text-shadow: 0 0 24px rgba(120, 190, 255, 0.25);
+}
+.headline h1::first-line {
+  font-size: 78%; /* THINK is smaller than the other two words */
+}
+.headline h1 span {
+  color: #f05a1f;
+  text-shadow: none;
+}
+
+/* scroll down: mouse icon */
+.headline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 11.6vh;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 38px;
+  border: 2px solid #e8edf3;
+  border-radius: 14px;
+  background: linear-gradient(#e8edf3, #e8edf3) no-repeat center 8px / 3px 9px;
+}
+
+/* scroll down: text + orange line under it */
+.headline::after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  padding-bottom: 7.4vh;
+  white-space: nowrap;
+  font-size: clamp(10px, 0.85vw, 16px);
+  letter-spacing: 0.25em;
+  color: #cfd8e3;
+  background: linear-gradient(#c0562a, #c0562a) no-repeat bottom center / 2px 5.8vh;
+}
+
+/* ---------- paragraph ---------- */
+.heroText p {
+  max-width: 29vw;
+  margin: 0 0 2.3vw;
+  font-size: clamp(13px, 1.2vw, 24px);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: #a8b3c1;
+}
+
+/* watch video: play circle */
+.heroText p::before {
+  position: absolute;
+  left: 24.9vw;
+  top: 38.3vw;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2vw;
+  height: 2vw;
+  min-width: 28px;
+  min-height: 28px;
+  box-sizing: border-box;
+  border: 2px solid #3aa0e0;
+  border-radius: 50%;
+  font-size: 0.8vw;
+  color: #3aa0e0;
+}
+
+/* watch video: text + blue underline */
+.heroText p::after {
+  position: absolute;
+  left: 27.9vw;
+  top: 38.3vw;
+  transform: translateY(-60%);
+  padding-bottom: 6px;
+  white-space: nowrap;
+  font-size: clamp(11px, 0.9vw, 17px);
+  letter-spacing: 0.25em;
+  color: #cfd8e3;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #3aa0e0, transparent) 1;
+}
+
+/* =====================================================
+   MEDIA QUERIES  (big -> small, later ones override earlier ones)
+   ===================================================== */
+
+/* ---------- very large screens (1920px and up) ---------- */
+@media (min-width: 1920px) {
+  .heroText { padding-left: 6vw; }
+  .hero::after { left: 6vw; }
+  .heroText p { max-width: 26vw; }
+}
+
+/* ---------- small laptops (1200px and below) ---------- */
+@media (max-width: 1200px) {
+  .hero {
+    background:
+      linear-gradient(90deg, rgba(2, 6, 13, 0.95) 0%, rgba(2, 6, 13, 0.8) 45%, rgba(2, 6, 13, 0.2) 80%),
+      url("../assets/Neon Cyborg Over Techfest Campus.png") 70% center / cover no-repeat #02060d;
+  }
+  .heroText p { max-width: 38vw; }
+  /* watch video moves with the wider paragraph */
+  .heroText p::before { left: 30vw; }
+  .heroText p::after { left: 33.5vw; }
+}
+
+/* ---------- short desktop / landscape screens ---------- */
+@media (min-width: 901px) and (max-height: 640px) {
+  .headline::before,
+  .headline::after { display: none; }   /* scroll indicator would overlap */
+  .hero::after { bottom: 6vh; }
+  .hero::before { bottom: 4vh; }
+}
+
+/* ---------- tablet (900px and below) ---------- */
+@media (max-width: 900px) {
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(2, 6, 13, 0.9), rgba(2, 6, 13, 0.6)),
+      url("../assets/Neon Cyborg Over Techfest Campus.png") 75% center / cover no-repeat #02060d;
+  }
+  .heroText { padding: 120px 24px 140px; }
+  .heroText::before, .hero::after { font-size: 12px; }
+  .headline h1 { margin-top: 24px; font-size: 11vw; }
+  .heroText p { max-width: 100%; margin: 24px 0 28px; font-size: 15px; }
+  .hero::after { left: 24px; bottom: 24px; }
+
+  /* hide the desktop-only details */
+  .hero::before,
+  .heroText::after,
+  .headline::before,
+  .headline::after,
+  .heroText p::before,
+  .heroText p::after { display: none; }
+}
+
+/* ---------- mobile (600px and below) ---------- */
+@media (max-width: 600px) {
+  .hero { background-position: 0 0, 80% center; } /* 1st = fade, 2nd = image */
+  .heroText { padding: 112px 20px 120px; }
+  .heroText::before {
+    padding-left: 44px;
+    letter-spacing: 0.2em;
+    background-size: 30px 2px;
+  }
+  .headline h1 { font-size: 12.5vw; }
+  .heroText p { max-width: 90%; font-size: 14px; }
+  .hero::after {
+    left: 20px;
+    padding-left: 44px;
+    letter-spacing: 0.18em;
+    background-size: 30px 2px;
+  }
+}
+
+/* ---------- small phones (380px and below) ---------- */
+@media (max-width: 380px) {
+  .heroText { padding: 108px 16px 110px; }
+  .headline h1 { font-size: 11.5vw; }
+  .heroText p { max-width: 100%; font-size: 13px; }
+  .heroText::before { font-size: 11px; letter-spacing: 0.15em; }
+  .hero::after { left: 16px; font-size: 10px; letter-spacing: 0.12em; }
+}
+
+/* ---------- phone in landscape ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { background-position: 0 0, center right; }
+  .heroText { padding-top: 112px; }
+  .headline h1 { font-size: clamp(26px, 12vh, 56px); }
+}

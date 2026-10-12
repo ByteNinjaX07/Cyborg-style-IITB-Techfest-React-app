@@ -1,0 +1,220 @@
+/* =====================================================================
+   SUBTLE ANIMATIONS
+   ---------------------------------------------------------------------
+   This file is already imported by App.jsx (it was empty), so nothing
+   else needs to change.
+
+   Your components use CSS Modules, so class names get a generated suffix
+   (e.g. "_hero_x7k2p"). The selectors below match on the readable part
+   of the name: [class*="_hero_"] means "any class containing _hero_".
+
+   Notes:
+   - Entrance animations use `backwards` fill, so once they finish, your
+     own styles (like the :hover scale on .card and .cta) take over again.
+   - Only opacity and transform are animated (smooth, cheap to render).
+   - Elements with absolutely-positioned pseudo-elements (.hero, .heroText)
+     only get opacity animations, so their layout never shifts.
+   ===================================================================== */
+
+
+/* ---------- keyframes ---------- */
+@keyframes anim-fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes anim-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+}
+
+@keyframes anim-fade-down {
+  from { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes anim-slide-in {
+  from { opacity: 0; transform: translateX(-24px); }
+}
+
+@keyframes anim-grow-line {
+  from { width: 0; }
+}
+
+@keyframes anim-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 106, 26, 0.35) inset, 0 0 8px rgba(255, 106, 26, 0.3); }
+  50%      { box-shadow: 0 0 14px rgba(255, 106, 26, 0.55) inset, 0 0 16px rgba(255, 106, 26, 0.5); }
+}
+
+
+/* ---------- navbar ---------- */
+[class*="_navbar_"] {
+  animation: anim-fade-down 0.7s ease backwards;
+}
+
+[class*="_nav_"] button {
+  transition: border-bottom-color 0.3s ease, opacity 0.3s ease;
+}
+
+[class*="_nav_"] button:not([class*="_active_"]):hover {
+  border-bottom-color: rgba(255, 165, 0, 0.55);
+}
+
+
+/* ---------- page change: every route fades in ---------- */
+[class*="_hero_"],
+[class*="_about-container_"],
+[class*="_faqContainer_"],
+[class*="_page_"] {
+  animation: anim-fade-in 0.6s ease backwards;
+}
+
+
+/* ---------- home: one staggered intro ---------- */
+[class*="_headline_"] h1 {
+  animation: anim-fade-up 0.8s ease 0.2s backwards;
+}
+
+[class*="_heroText_"] > p {
+  animation: anim-fade-in 0.8s ease 0.5s backwards;   /* opacity only, so its pseudo-elements stay put */
+}
+
+/* the glowing button (used on Home and Perks) */
+[class*="_cta_"] {
+  animation:
+    anim-fade-in 0.8s ease 0.8s backwards,
+    anim-glow 3.5s ease-in-out 1.6s infinite;
+}
+
+
+/* ---------- about ---------- */
+[class*="_ldiv_"] {
+  animation: anim-slide-in 0.8s ease 0.1s backwards;
+}
+
+[class*="_ldiv-line_"] {
+  animation: anim-grow-line 0.8s ease 0.6s backwards;
+}
+
+[class*="_rdiv_"] > * {
+  animation: anim-fade-up 0.7s ease backwards;
+}
+[class*="_rdiv_"] > *:nth-child(1) { animation-delay: 0.25s; }
+[class*="_rdiv_"] > *:nth-child(2) { animation-delay: 0.35s; }
+[class*="_rdiv_"] > *:nth-child(3) { animation-delay: 0.45s; }
+[class*="_rdiv_"] > *:nth-child(4) { animation-delay: 0.55s; }
+
+
+/* ---------- perks ---------- */
+[class*="_content_"] > section:first-child > :nth-child(-n+3) {
+  animation: anim-fade-up 0.7s ease backwards;
+}
+[class*="_content_"] > section:first-child > :nth-child(1) { animation-delay: 0.1s; }
+[class*="_content_"] > section:first-child > :nth-child(2) { animation-delay: 0.2s; }
+[class*="_content_"] > section:first-child > :nth-child(3) { animation-delay: 0.3s; }
+[class*="_content_"] > section:first-child > :nth-child(4) { animation: anim-fade-in 0.7s ease 0.4s backwards; }
+
+/* cards rise one after another */
+[class*="_card_"] {
+  animation: anim-fade-up 0.7s ease backwards;
+}
+[class*="_card_"]:nth-child(1) { animation-delay: 0.20s; }
+[class*="_card_"]:nth-child(2) { animation-delay: 0.28s; }
+[class*="_card_"]:nth-child(3) { animation-delay: 0.36s; }
+[class*="_card_"]:nth-child(4) { animation-delay: 0.44s; }
+[class*="_card_"]:nth-child(5) { animation-delay: 0.52s; }
+[class*="_card_"]:nth-child(6) { animation-delay: 0.60s; }
+
+/* icon ring and accent line react when a card is hovered */
+[class*="_ring_"] {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+[class*="_card_"]:hover [class*="_ring_"] {
+  border-color: rgba(255, 106, 26, 0.95);
+  box-shadow: 0 0 14px rgba(255, 106, 26, 0.35);
+}
+
+[class*="_card-line_"] {
+  transition: width 0.3s ease;
+}
+[class*="_card_"]:hover [class*="_card-line_"] {
+  width: 44px;
+}
+
+
+/* ---------- faq ---------- */
+[class*="_heading_"] {
+  animation: anim-fade-down 0.7s ease 0.1s backwards;
+}
+
+[class*="_faqItem_"] {
+  animation: anim-fade-up 0.6s ease backwards;
+  transition: border-color 0.3s ease;
+}
+[class*="_faqItem_"]:nth-child(1)  { animation-delay: 0.10s; }
+[class*="_faqItem_"]:nth-child(2)  { animation-delay: 0.15s; }
+[class*="_faqItem_"]:nth-child(3)  { animation-delay: 0.20s; }
+[class*="_faqItem_"]:nth-child(4)  { animation-delay: 0.25s; }
+[class*="_faqItem_"]:nth-child(5)  { animation-delay: 0.30s; }
+[class*="_faqItem_"]:nth-child(6)  { animation-delay: 0.35s; }
+[class*="_faqItem_"]:nth-child(7)  { animation-delay: 0.40s; }
+[class*="_faqItem_"]:nth-child(8)  { animation-delay: 0.45s; }
+[class*="_faqItem_"]:nth-child(9)  { animation-delay: 0.50s; }
+[class*="_faqItem_"]:nth-child(10) { animation-delay: 0.55s; }
+
+[class*="_faqItem_"]:hover {
+  border-color: rgba(255, 157, 0, 0.5);
+}
+
+[class*="_question_"] {
+  transition: background 0.25s ease;
+}
+
+/* the answer slides open when it appears (it is added to the page on click) */
+[class*="_answer_"] {
+  animation: anim-fade-up 0.3s ease backwards;
+}
+
+[class*="_icon_"] {
+  transition: transform 0.25s ease;
+}
+[class*="_question_"]:hover [class*="_icon_"] {
+  transform: scale(1.2);
+}
+
+
+/* ---------- "Become a CA" form: reacts to the click ---------- */
+[class*="_overlay_"] {
+  animation: anim-fade-in 0.3s ease backwards;
+}
+
+[class*="_formContainer_"] {
+  animation: anim-fade-up 0.45s ease 0.05s backwards;
+}
+
+[class*="_closeButton_"] {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+[class*="_closeButton_"]:hover {
+  transform: rotate(90deg);
+  color: #ff6500;
+}
+
+[class*="_formGrid_"] input,
+[class*="_formGrid_"] select,
+[class*="_formContainer_"] textarea {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+[class*="_formGrid_"] input:focus,
+[class*="_formGrid_"] select:focus,
+[class*="_formContainer_"] textarea:focus {
+  box-shadow: 0 0 0 3px rgba(255, 101, 0, 0.15);
+}
+
+
+/* ---------- respect "reduce motion" system setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

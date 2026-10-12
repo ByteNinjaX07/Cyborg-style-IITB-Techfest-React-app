@@ -1,0 +1,31 @@
+:root {
+  --orange: #ff6a1a;
+  --orange-soft: #ff8a3d;
+  --ink: #e9eef5;
+  --muted: #aab4c3;
+  --card-border: #26435f;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding: 12px 26px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--orange);
+  text-decoration: none;
+  border: 1.5px solid var(--orange);
+  background: rgba(255, 106, 26, 0.06);
+  box-shadow: 0 0 10px rgba(255, 106, 26, 0.35) inset, 0 0 8px rgba(255, 106, 26, 0.3);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: transform 0.3s ease; 
+}
+
+.cta:hover {
+  transform: scale(1.05);           
+
+}

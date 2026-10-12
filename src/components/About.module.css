@@ -1,0 +1,119 @@
+/* ===== Page container ===== */
+.about-container {
+  position: relative;
+  isolation: isolate;           /* keeps the z-index: -1 background inside this page */
+  display: flex;
+  align-items: flex-start;
+  gap: 40px 160px;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;           /* correct height on mobile browsers */
+  padding: 140px 6vw 60px;      /* top padding leaves room for the navbar */
+  box-sizing: border-box;
+}
+
+/* ===== Background layer ===== */
+.bg {
+  position: fixed;
+  inset: 0;                     /* top/right/bottom/left = 0, so it fills the window */
+  z-index: -1;                  /* behind the text */
+  background-size: cover;       /* scale and crop to always fill the screen */
+  background-position: center;  /* try "30% center" to keep the building in view on phones */
+  background-repeat: no-repeat;
+}
+
+/* dark overlay so the text stays readable */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+
+/* ===== Left column ===== */
+.about-title,
+.techfest-title {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);   /* shrinks on small screens */
+  line-height: 1;
+}
+
+.about-title {
+  color: #fff;
+}
+
+.techfest-title {
+  color: orangered;
+}
+
+.ldiv-line {
+  width: 60px;
+  height: 2px;
+  margin: 27px 0 0;
+  border: none;
+  background: #f74d04ad;
+}
+
+/* ===== Right column ===== */
+.rdiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;                    /* spacing between blocks, no <br> or negative margins */
+  max-width: 380px;
+}
+
+.rdiv p {
+  margin: 0;
+  color: silver;
+  line-height: 1.5;
+}
+
+/* ===== Stats ===== */
+.key-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  margin-top: 10px;
+}
+
+.key-info h2 {
+  margin: 0 0 4px;
+  color: orangered;
+  line-height: 1;
+}
+
+.key-info p {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Tagline ===== */
+.tagline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 2px solid #f74d04ad;
+  border-bottom: 2px solid #f74d04ad;
+}
+
+.rdiv .tagline p {
+  color: #f74d04a6;
+}
+
+/* ===== Tablet and phone ===== */
+@media (max-width: 800px) {
+  .about-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 120px 24px 40px;
+  }
+
+  .rdiv {
+    max-width: 100%;
+  }
+
+  .bg::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
+  }
+}
